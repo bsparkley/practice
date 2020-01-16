@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Beth Shopping Cart</title>
+    <meta name="description" content="Beth Shopping Cart">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="shoppingCartWrapper">
+        <div id="cart-header">
+            <h1>Shopping Cart</h1>
+        </div>
+        <div id="cartItems">
+            <div id="cartCheckoutWrapper">
+                <div id="cartSummary">
+                    <div class="cart-totals-row">
+                        <div class="cart-totals-left">Summary</div>
+                        <div class="cart-totals-right"></div>
+                    </div>
+                    <div class="cart-totals-row">
+                        <div class="cart-totals-left">Tax</div>
+                        <div class="cart-totals-right"></div>
+                    </div>
+                    <div class="cart-totals-row">
+                        <div class="cart-totals-left">Shipping</div>
+                        <div class="cart-totals-right"></div>
+                    </div>
+                    <div id="cartGrandTotal">
+                        <div class="grand-total-row">
+                            <div class="grand-total-left">TOTAL</div>
+                            <div class="grand-total-left"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="cartCheckout">
+                    <button>CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+
+
+            $(document).ready(function () {
+
+                var cartItems = [
+                    {
+                        item_img: "https://dks.scene7.com/is/image/GolfGalaxy/1947BWNFL49RSFLYTSAF?wid=1400&fmt=jpg", item_name: "Women's San Francisco 49ers T-Shirt", item_price: 19.99, item_size: "S", item_quantity: 2, subtotal() {
+                            return this.item_price  * this.item_quantity ;
+                        }
+                    },
+                    {
+                        item_img: "https://i.etsystatic.com/18889951/r/il/d458b9/1777365197/il_1588xN.1777365197_7dae.jpg", item_name: "Women's Barn Hair Don't Care T-Shirt", item_price: 24.99, item_size: "S", item_quantity: 2, subtotal() {
+                            return this.item_price  * this.item_quantity ;
+                        }
+                    },
+                    {
+                        item_img: "https://www.rei.com/media/5cbe1f50-4985-4153-8554-8aa004496a54?size=784x588", item_name: "Women's Burton Snowboarding Boots", item_price: 129.99, item_size: "9", item_quantity: 2, subtotal() {
+                            return this.item_price  * this.item_quantity ;
+                        }
+                    },
+                    {
+                        item_img: "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dw8fa67a06/images/ProductImages/120284/120284_080_l_WR.jpg?sw=900", item_name: "Women's Brooks Running Shoes", item_regular_price: 109.99, item_size: "9", item_quantity: 2, subtotal() {
+                            return this.item_price  * this.item_quantity ;
+                        }
+                    },
+                ]
+
+
+                document.getElementById('cartItems').innerHTML = cartItems.map(item =>
+                    `
+                <div class="items">
+                <div class="item-img">
+                    <img src="${item.item_img}" alt="${item.item_name}" />
+                </div>
+                <div class="item-details">
+                    <div class="item-name">${item.item_name}</div>
+                    <div class="item-price">${item.item_price}</div>
+                    <div class="item-color">${item.item_color}</div>
+                    <div class="item-size">${item.item_size}</div>
+                    <div class="item-subtotal">${item.subtotal()}</div>
+                </div>
+                <div class="quantity-wrapper">
+                    <div class="item-quantity">${item.item.quantity}</div>
+                    <div class="remove">
+                        <a>Remove</a>
+                    </div>
+                </div>
+            </div>
+            `
+                ).join('');
+
+            });
+        </script>
+
+
+</body>
+
+</html>
